@@ -1,6 +1,8 @@
 const https = require('follow-redirects').https;
 const tar = require('tar');
 
+const isWindows = /^win/.test(process.platform);
+
 const ghd = ({
   username,
   repo,
@@ -19,6 +21,7 @@ const ghd = ({
     const ws = new tar.Unpack({
       cwd: dirname,
       unlink: true,
+      win32: isWindows,
     });
     res.pipe(ws);
     ws.on('close', () => {
