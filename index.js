@@ -20,11 +20,11 @@ const ghd = ({
       cwd: dirname,
     });
     res.pipe(ws);
-    ws.on('finish', () => {
-      console.log('finished');
+    ws.on('close', () => {
+      accept();
     });
     ws.on('error', err => {
-      console.warn(err);
+      reject(err);
     });
   });
   req.on('error', err => {
