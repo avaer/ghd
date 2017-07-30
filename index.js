@@ -1,8 +1,6 @@
 const https = require('follow-redirects').https;
 const fs = require('fs');
 
-const isWindows = /^win/.test(process.platform);
-
 const ghd = ({
   username,
   repo,
