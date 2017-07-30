@@ -18,6 +18,7 @@ const ghd = ({
   }, res => {
     const ws = new tar.Unpack({
       cwd: dirname,
+      unlink: true,
     });
     res.pipe(ws);
     ws.on('close', () => {
