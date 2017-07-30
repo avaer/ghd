@@ -1,6 +1,6 @@
 {
   "name": "ghd",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Github downloader",
   "main": "index.js",
   "scripts": {
