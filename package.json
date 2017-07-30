@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/modulesio/ghd#readme",
   "dependencies": {
-    "follow-redirects": "^1.2.4",
-    "tar": "^3.1.7"
+    "follow-redirects": "^1.2.4"
   }
 }

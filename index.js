@@ -1,5 +1,5 @@
 const https = require('follow-redirects').https;
-const tar = require('tar');
+const fs = require('fs');
 
 const isWindows = /^win/.test(process.platform);
 
@@ -8,7 +8,7 @@ const ghd = ({
   repo,
   path,
   hash,
-  dirname,
+  file,
 }) => new Promise((accept, reject) => {
   const req = https.request({
     protocol: 'https:',
@@ -18,13 +18,9 @@ const ghd = ({
       'Accept-Encoding': 'gzip',
     },
   }, res => {
-    const ws = new tar.Unpack({
-      cwd: dirname,
-      unlink: true,
-      win32: isWindows,
-    });
+    const ws = fs.createWriteStream(file);
     res.pipe(ws);
-    ws.on('close', () => {
+    ws.on('finish', () => {
       accept();
     });
     ws.on('error', err => {
